@@ -1,6 +1,107 @@
+body {
+  font-family: "Rubik", sans-serif;
+}
+
 .wrapper {
   min-width: 100%;
   margin: 0;
   list-style: none;
+}
+
+.page__background {
+  position: absolute;
+  z-index: 1;
+}
+
+.page__cover img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.page__container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 15px;
+  z-index: 1000;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page__content {
+  margin: 80px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content__title {
+  color: aliceblue;
+}
+
+.content__input {
+  margin: 20px 0px 20px 0px;
+  box-shadow: 3px 6px 24px -18px rgba(54, 54, 64, 0.75);
+}
+.content__input input {
+  min-width: 500px;
+  font-family: "Rubik", sans-serif;
+  padding: 20px;
+  font-size: 16px;
+  border-radius: 6px 0 0 6px;
+  border: none;
+}
+.content__input input::placeholder {
+  font-size: 16px;
+}
+.content__input textarea:focus, .content__input input:focus {
+  outline: none;
+}
+.content__input .input button {
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.7960784314);
+  border: none;
+  padding: 21px;
+  border-radius: 0 6px 6px 0;
+  margin-left: -5px;
+  transition: 0.25s background-color ease-out;
+}
+.content__input .input button:hover {
+  background-color: #525561;
+}
+
+.content__info {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 30px;
+  box-shadow: 3px 6px 24px -18px rgba(54, 54, 64, 0.75);
+}
+.content__info .info__body {
+  display: flex;
+  flex-direction: row;
+}
+.content__info .info__item {
+  min-width: 214px;
+}
+.content__info .info__item:not(:last-child) {
+  border-right: 1px solid rgba(102, 102, 102, 0.315);
+}
+.content__info .item__title {
+  margin-bottom: 10px;
+  padding: 0px 20px 0px 20px;
+}
+.content__info .item__title p {
+  font-weight: 700;
+  color: rgba(102, 102, 102, 0.7411764706);
+  font-size: 13px;
+}
+.content__info .item__text {
+  color: rgba(0, 0, 0, 0.7960784314);
+  max-width: 164px;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 0px 30px 0px 20px;
 }
 /*# sourceMappingURL=main.css.map */
