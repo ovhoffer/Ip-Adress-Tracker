@@ -1,5 +1,5 @@
 
-import { checkIfValid, addTileLayer, getAdress, addOffset } from "./helpers/index.mjs";
+import {checkIfValid, addTileLayer, getAdress, addOffset } from "./helpers/index.mjs";
 
 
 
@@ -10,28 +10,76 @@ const locationInfo = document.querySelector('.item__location .item__text p');
 const timezoneInfo = document.querySelector('.item__timezone .item__text p');
 const ispInfo = document.querySelector('.item__isp .item__text p');
 const mapArea = document.querySelector('.page__map');
- 
+const modalIp = document.querySelector('.page__invalid');
+const modalServer = document.querySelector('.page__server-error');
+const modalServerButton = document.querySelector('.page__server-error button')
+const modalIpButton = document.querySelector('.page__invalid button');
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
-   getAdress('192.234.231.102').then(data => updateData(data))
+   getAdress('192.234.231.102').then(data => updateData(data));
+   
 })
 
 inputButton.addEventListener('click', getData);
 inputArea.addEventListener('keydown', handleKey);
+modalIpButton.addEventListener('click', hideAndSetIp);
+modalServerButton.addEventListener('click', hideAndSetServer)
+
+
+
+function hideAndSetIp() {
+   if (modalIp.style.opacity == 1) {
+      modalIp.style.pointerEvents = 'none';
+      modalIp.style.opacity = 0;
+     
+   }
+   else if (modalIp.style.opacity == 0) {
+      modalIp.style.pointerEvents = 'all';
+      modalIp.style.opacity = 1;
+   
+   }
+}
+
+ 
+function hideAndSetServer() {
+   if (modalServer.style.opacity == 1) {
+      modalServer.style.pointerEvents = 'none';
+      modalServer.style.opacity = 0;
+     
+   }
+   else if (modalServer.style.opacity == 0) {
+      modalServer.style.pointerEvents = 'all';
+      modalServer.style.opacity = 1;
+   
+   }
+}
+
 
 
 function getData() {
-const inputValue = inputArea.value;
-checkIfValid(inputValue);
-try {
-   getAdress(inputValue)
-   .then(data => updateData(data))
+   let inputValue = inputArea.value;
+   console.log(inputValue);
+   let res = checkIfValid(`${inputValue}`);
+   console.log(res)
+   if (res == false) {
+      hideAndSetIp();
+      inputArea.value = '';
+      throw new Error('IP adress is invalid'); 
    }
-catch (error) {
-   alert('Problems with server. Try later!');
-   throw new Error('Problems with server. Try later!');
-   
+   else if (res == true) {
+      try {
+         getAdress(inputValue)
+            .then(data => updateData(data))
+            .then(console.log)
+         }
+      catch (error) {
+         hideAndSetServer();
+         throw new Error('Problems with server. Try later!');
+         }
    }
-   
 }  
 
 
