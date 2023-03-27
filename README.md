@@ -10,7 +10,7 @@ Moreover, there's also a little map with a pin to show the location.
 ## Usage
 
 Usage is very simple. You only need to fill out a field with the address and then click a black button (or just press enter).
-Only IPv4 addresses are accepted! If an address is invalid you will see the error.
+**Only IPv4 addresses are accepted!** If an address is invalid you will see the error.
 
 **There are some examples of IPv4 and IPv6 IP addresses:**
  * IPv4: 01.102.103.104 
